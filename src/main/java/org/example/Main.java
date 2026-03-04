@@ -19,9 +19,10 @@ public class Main {
             System.out.println("2. Show All Students");
             System.out.println("3. Exit");
             System.out.print("Choice: ");
+            System.out.println("Choose carefully");
 
             choice = scanner.nextInt();
-            scanner.nextLine(); // clear buffer
+            scanner.nextLine();
 
             switch (choice) {
 
