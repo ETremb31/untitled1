@@ -1,17 +1,70 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import Model.student;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+public class Main {
+
+    public static void main(String[] args) {
+
+        ArrayList<student> students = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        int choice = 0;
+
+        while (choice != 3) {
+
+            System.out.println("\n--- MENU ---");
+            System.out.println("1. Add Student");
+            System.out.println("2. Show All Students");
+            System.out.println("3. Exit");
+            System.out.print("Choice: ");
+
+            choice = scanner.nextInt();
+            scanner.nextLine(); // clear buffer
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("First Name: ");
+                    String prenom = scanner.nextLine();
+
+                    System.out.print("Last Name: ");
+                    String nom = scanner.nextLine();
+
+                    System.out.print("Speciality: ");
+                    String specialite = scanner.nextLine();
+
+                    student newStudent = new student(prenom, nom, specialite);
+                    students.add(newStudent);
+
+                    System.out.println("Student added successfully!");
+                    break;
+
+                case 2:
+                    if (students.isEmpty()) {
+                        System.out.println("No students in the list.");
+                    } else {
+                        System.out.println("\n--- Student List ---");
+                        for (int i = 0; i < students.size(); i++) {
+                            student s = students.get(i);
+                            System.out.println((i + 1) + ". "
+                                    + s.prenom + " "
+                                    + s.nom + " - "
+                                    + s.specialite);
+                        }
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("Exiting program...");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
         }
+
+        scanner.close();
     }
 }
