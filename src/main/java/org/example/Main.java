@@ -58,6 +58,7 @@ public class Main {
 
                 case 3:
                     System.out.println("Exiting program...");
+                    System.out.println("\n--- End Of Program ---\n");
                     break;
 
                 default:
